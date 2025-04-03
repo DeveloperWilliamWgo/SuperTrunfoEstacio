@@ -14,14 +14,16 @@ typedef struct {
 // Função para ler os dados da carta
 void lerCarta(Carta *carta, int num) {
     printf("\nDigite os dados da Carta %d:\n", num);
-    printf("Estado (A-H): ");
+    printf("Estado: ");
     scanf(" %c", &carta->estado);
     
+    getchar();
     printf("Código da Carta (ex: A01): ");
     scanf(" %3s", carta->codigo);
     
+    getchar();
     printf("Nome da Cidade: ");
-    scanf(" %[^"]s", carta->nomeCidade);  // Lê a string com espaços
+    fgets(carta->nomeCidade, sizeof(carta->nomeCidade), stdin);
     
     printf("População: ");
     scanf(" %d", &carta->populacao);
@@ -53,6 +55,7 @@ int main() {
     
     // Ler dados das cartas
     lerCarta(&carta1, 1);
+    getchar();
     lerCarta(&carta2, 2);
     
     // Exibir dados das cartas
